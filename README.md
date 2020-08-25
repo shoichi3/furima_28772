@@ -11,9 +11,8 @@
 | last_name       | string   | null: false |
 | first_name_kana | string   | null: false |
 | last_name_kana  | string   | null: false |
-| birth_date1     | integer  | null: false |
-| birth_date2     | integer  | null: false |
-| birth_date3     | integer  | null: false |
+| birth_date      | date     | null: false |
+
 
 
 ### Association
@@ -27,18 +26,14 @@
 | --------------- | ----------- | ------------------------------ |
 | name            | string      | null: false                    |
 | detail          | text        | null: false                    |
-| category_id     | references  | null: false, foreign_key: true |
-| status_id       | references  | null: false, foreign_key: true |
-| prefecture_id   | references  | null: false, foreign_key: true |
-| shipping_fee_id | references  | null: false, foreign_key: true |
-| delivery_date_id| references  | null: false, foreign_key: true |
+| category_id     | integer     | null: false                    |
+| status_id       | integer     | null: false                    |
+| prefecture_id   | integer     | null: false                    |
+| shipping_fee_id | integer     | null: false                    |
+| delivery_date_id| integer     | null: false                    |
+| burden_id       | integer     | null: false                    |
 | price           | integer     | null: false                    |
-| user_id         | references  | null: false, foreign_key: true |
-| prefecture_id   | references  | null: false, foreign_key: true |
-| category_id     | references  | null: false, foreign_key: true |
-| status_id       | references  | null: false, foreign_key: true |
-| burden_id       | references  | null: false, foreign_key: true |
-| day_id          | references  | null: false, foreign_key: true |
+| user            | references  | null: false, foreign_key: true |
 
 ### Association
 
