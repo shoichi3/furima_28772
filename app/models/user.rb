@@ -6,4 +6,10 @@ class User < ApplicationRecord
   
   has_many :items
   has_many :purchase_information
+  validates :nickname, null: false
+  validates :first_name, null: false
+  validates :last_name, null: false
+  validates :first_name_kana, null: false
+  validates :last_name_kana, null: false
+  validates :birth_date, null: false
 end
