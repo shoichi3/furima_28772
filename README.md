@@ -13,12 +13,11 @@
 | last_name_kana  | string   | null: false |
 | birth_date      | date     | null: false |
 
-
-
 ### Association
 
 - has_many :items
 - has_many :purchases
+- has_one :purchase_information
 
 ## itemsテーブル
 
@@ -45,6 +44,7 @@
 - belongs_to_active_hash :burden
 - belongs_to_active_hash :day
 - has_one_attached :image
+- has_one :purchase_information
 
 ## purchasesテーブル
 
@@ -55,11 +55,23 @@
 | city            | string    | null: false                       |
 | address         | string    | null: false                       |
 | building        | string    |                                   |
-| phone_number    | string    |null: false                        |
-| user_id         | references| null: false, foreign_key: true    |
-| item_id         | references| null: false, foreign_key: true    |
+| phone_number    | string    | null: false                       |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
 - belongs_to_active_hash :prefecture
+- has_one :purchase_information
+
+## purchase_informationテーブル
+|   Column        |   Type    |   Option                          |
+| --------------- | --------- | --------------------------------- |
+| user            | references| null: false, foreign_key: true    |
+| item            | references| null: false, foreign_key: true    |
+| purchase        | references| null: false, foreign_key: true    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- belongs_to :purchase
