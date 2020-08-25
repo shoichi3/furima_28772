@@ -50,10 +50,6 @@
 
 |   Column        |   Type   |   Option                           |
 | --------------- | -------- | ---------------------------------- |
-| card_number     | integer   | null: false                       |
-| card_exp_month  | integer   | null: false                       |
-| card_exp_year   | integer   | null: false                       |
-| card_cvc        | integer   | null: false                       |
 | postal_code     | integer   | null: false                       |
 | prefecture_id   | integer   | null: false, foreign_key: true    |
 | city            | string    | null: false                       |
