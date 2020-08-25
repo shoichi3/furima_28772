@@ -57,10 +57,8 @@
 | phone_number    | string    | null: false                       |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
 - belongs_to_active_hash :prefecture
-- has_one :purchase_information
+- belongs_to :purchase_information
 
 ## purchase_informationテーブル
 |   Column        |   Type    |   Option                          |
