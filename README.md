@@ -48,10 +48,10 @@
 
 ## purchasesテーブル
 
-|   Column        |   Type    |   Option                           |
-| --------------- | --------- | ---------------------------------- |
+|   Column        |   Type    |   Option                          |
+| --------------- | --------- | --------------------------------- |
 | postal_code     | string    | null: false                       |
-| prefecture_id   | integer   | null: false, foreign_key: true    |
+| prefecture_id   | integer   | null: false                       |
 | city            | string    | null: false                       |
 | address         | string    | null: false                       |
 | building        | string    |                                   |
