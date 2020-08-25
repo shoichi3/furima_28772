@@ -26,13 +26,13 @@
 | --------------- | ----------- | ------------------------------ |
 | name            | string      | null: false                    |
 | detail          | text        | null: false                    |
-| price           | integer     | null: false                    |
-| user_id         | references  | null: false, foreign_key: true |
-| prefecture_id   | references  | null: false, foreign_key: true |
 | category_id     | references  | null: false, foreign_key: true |
 | status_id       | references  | null: false, foreign_key: true |
-| burden_id       | references  | null: false, foreign_key: true |
-| day_id          | references  | null: false, foreign_key: true |
+| prefecture_id   | references  | null: false, foreign_key: true |
+| shipping_fee_id | references  | null: false, foreign_key: true |
+| delivery_date_id| references  | null: false, foreign_key: true |
+| price           | integer     | null: false                    |
+| user_id         | references  | null: false, foreign_key: true |
 
 
 ### Association
@@ -54,6 +54,12 @@
 | card_exp_month  | integer   | null: false                       |
 | card_exp_year   | integer   | null: false                       |
 | card_cvc        | integer   | null: false                       |
+| postal_code     | integer   | null: false                       |
+| prefecture_id   | integer   | null: false, foreign_key: true    |
+| city            | string    | null: false                       |
+| address         | string    | null: false                       |
+| building        | string    |                                   |
+| phone_number    | integer   |null: false                        |
 | user_id         | references| null: false, foreign_key: true    |
 | item_id         | references| null: false, foreign_key: true    |
 
@@ -61,4 +67,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :delivery
+- belongs_to_active_hash :prefecture
