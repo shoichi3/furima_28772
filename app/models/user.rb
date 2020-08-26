@@ -10,12 +10,14 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :birth_date, presence: true
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ンー-龥]+\z/, message: 'Full-width characters' } do
+  NAME_REGEX = /\A[ぁ-んァ-ンー-龥]+\z/.freeze
+  with_options presence: true, format: { with: NAME_REGEX, message: 'Full-width characters' } do
     validates :first_name
     validates :last_name
   end
 
-  with_options presence: true, format: { with: /\A[ァ-ン]+\z/, message: 'Full-width katakana characters' } do
+  NAME_KANA_REGEX = /\A[ァ-ン]+\z/.freeze
+  with_options presence: true, format: { with: NAME_KANA_REGEX, message: 'Full-width katakana characters' } do
     validates :first_name_kana
     validates :last_name_kana
   end
@@ -24,5 +26,4 @@ class User < ApplicationRecord
   with_options presence: true, format: { with: PASSWORD_REGEX, message: 'Include both letters and numbers' } do
     validates :password
   end
-  # validates_format_of :password, with: PASSWORD_REGEX, message: 'Password Include both letters and numbers'
 end
