@@ -6,10 +6,20 @@ class User < ApplicationRecord
   
   has_many :items
   has_many :purchase_information
-  validates :nickname, null: false
-  validates :first_name, null: false
-  validates :last_name, null: false
-  validates :first_name_kana, null: false
-  validates :last_name_kana, null: false
-  validates :birth_date, null: false
+  
+  validates :nickname, presence: true
+  validates :birth_date, presence: true
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ンー-龥]+\z/, message: 'Full-width characters'} do
+    validates :first_name
+    validates :last_name
+  end
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ンー-龥]+\z/, message: 'Full-width katakana characters'} do
+    validates :first_name_kana
+    validates :last_name_kana
+  end
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'Password Include both letters and numbers'
 end
