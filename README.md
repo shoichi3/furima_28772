@@ -26,10 +26,9 @@
 | detail          | text        | null: false                    |
 | category_id     | integer     | null: false                    |
 | status_id       | integer     | null: false                    |
-| prefecture_id   | integer     | null: false                    |
-| shipping_fee_id | integer     | null: false                    |
-| delivery_date_id| integer     | null: false                    |
 | burden_id       | integer     | null: false                    |
+| prefecture_id   | integer     | null: false                    |
+| delivery_date_id| integer     | null: false                    |
 | price           | integer     | null: false                    |
 | user            | references  | null: false, foreign_key: true |
 
@@ -40,7 +39,7 @@
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :burden
-- belongs_to_active_hash :day
+- belongs_to_active_hash :delivery_date
 - has_one_attached :image
 - has_one :purchase_information
 
