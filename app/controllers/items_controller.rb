@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  
+  before_action :check_login, except: :index
+  
   def index
   end
 
@@ -19,5 +22,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:image, :name, :detail, :category_id, :status_id, :burden_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
+  end
+
+  def check_login
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 end
