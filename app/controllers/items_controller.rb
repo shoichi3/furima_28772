@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :check_login, except: :index
   
   def index
+    @items = Item.order("created_at DESC").includes(:order)
   end
 
   def new

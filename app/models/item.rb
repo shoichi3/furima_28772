@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :delivery_date
   belongs_to :user
+  has_one :order
   has_one_attached :image
 
   validates :image, :name, :detail, :category, :status, :burden, :prefecture, :delivery_date, :price, presence: true
