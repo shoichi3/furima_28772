@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_information
+- has_many :orders
 
 ## itemsテーブル
 
@@ -41,7 +41,7 @@
 - belongs_to_active_hash :burden
 - belongs_to_active_hash :delivery_date
 - has_one_attached :image
-- has_one :purchase_information
+- has_one :order
 
 ## purchasesテーブル
 
@@ -53,13 +53,13 @@
 | address              | string    | null: false                       |
 | building             | string    |                                   |
 | phone_number         | string    | null: false                       |
-| purchase_information | references| null: false, foreign_key: true    |
+| order                | references| null: false, foreign_key: true    |
 
 ### Association
 - belongs_to_active_hash :prefecture
-- belongs_to :purchase_information
+- belongs_to :order
 
-## purchase_informationテーブル
+## orderテーブル
 |   Column        |   Type    |   Option                          |
 | --------------- | --------- | --------------------------------- |
 | user            | references| null: false, foreign_key: true    |
