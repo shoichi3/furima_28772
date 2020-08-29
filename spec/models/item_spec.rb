@@ -35,8 +35,20 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Category Select')
     end
 
+    it 'category_idが1の場合保存できない' do
+      @item.category_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category Select')
+    end
+
     it 'status_idが空の場合保存できない' do
       @item.status_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Status Select')
+    end
+
+    it 'status_idが1の場合保存できない' do
+      @item.status_id = "1"
       @item.valid?
       expect(@item.errors.full_messages).to include('Status Select')
     end
@@ -47,14 +59,32 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Burden Select')
     end
 
+    it 'burden_idが1の場合保存できない' do
+      @item.burden_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Burden Select')
+    end
+
     it 'prefecture_idが空の場合保存できない' do
       @item.prefecture_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture Select')
     end
 
+    it 'prefecture_idが1の場合保存できない' do
+      @item.prefecture_id = "1"
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Prefecture Select')
+    end
+
     it 'delivery_date_idが空の場合保存できない' do
       @item.delivery_date_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Delivery date Select')
+    end
+
+    it 'delivery_date_idが1の場合保存できない' do
+      @item.delivery_date_id = "1"
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery date Select')
     end
