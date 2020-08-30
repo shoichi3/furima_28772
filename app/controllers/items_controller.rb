@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :check_login, except: [:index, :show]
+  before_action :get_record, only: :show
 
   def index
     @items = Item.order('created_at DESC').includes(:order)
@@ -19,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   private
@@ -30,5 +30,9 @@ class ItemsController < ApplicationController
 
   def check_login
     redirect_to root_path unless user_signed_in?
+  end
+
+  def get_record
+    @item = Item.find(params[:id])
   end
 end
