@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-  
-  before_action :check_login, except: :index
-  
+  before_action :check_login, except: [:index, :show]
+  before_action :get_record, only: :show
+
   def index
-    @items = Item.order("created_at DESC").includes(:order)
+    @items = Item.order('created_at DESC').includes(:order)
   end
 
   def new
@@ -19,6 +19,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def item_params
@@ -26,8 +29,10 @@ class ItemsController < ApplicationController
   end
 
   def check_login
-    unless user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in?
+  end
+
+  def get_record
+    @item = Item.find(params[:id])
   end
 end
