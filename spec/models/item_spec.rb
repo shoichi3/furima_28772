@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'category_idが1の場合保存できない' do
-      @item.category_id = "1"
+      @item.category_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include('Category Select')
     end
@@ -48,7 +48,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'status_idが1の場合保存できない' do
-      @item.status_id = "1"
+      @item.status_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include('Status Select')
     end
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'burden_idが1の場合保存できない' do
-      @item.burden_id = "1"
+      @item.burden_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include('Burden Select')
     end
@@ -72,7 +72,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'prefecture_idが1の場合保存できない' do
-      @item.prefecture_id = "1"
+      @item.prefecture_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture Select')
     end
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
     end
 
     it 'delivery_date_idが1の場合保存できない' do
-      @item.delivery_date_id = "1"
+      @item.delivery_date_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery date Select')
     end
