@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :check_login, except: [:index, :show]
-  before_action :get_record, only: [:show, :edit, :update]
+  before_action :get_record, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.order('created_at DESC').includes(:order)
@@ -31,6 +31,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
