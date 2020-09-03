@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one :order
   has_one_attached :image
 
-  validates :image, :name, :detail, :category, :status, :burden, :prefecture, :delivery_date, :price, presence: true
+  validates :image, :name, :detail, :price, presence: true
 
   validates :category_id, :status_id, :burden_id, :prefecture_id, :delivery_date_id, numericality: { other_than: 1, message: 'Select' }
 
