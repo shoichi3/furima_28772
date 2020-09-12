@@ -11,10 +11,10 @@ class Item < ApplicationRecord
 
   validates :image, :name, :detail, :price, presence: true
 
-  validates :category_id, :status_id, :burden_id, :prefecture_id, :delivery_date_id, numericality: { other_than: 1, message: 'Select' }
+  validates :category_id, :status_id, :burden_id, :prefecture_id, :delivery_date_id, numericality: { other_than: 1, message: 'を選んでください' }
 
   PRICE_REGEX = /\A[0-9]+\z/.freeze
-  validates :price, numericality: { with: PRICE_REGEX, message: 'Half-width number' }
+  validates :price, numericality: { with: PRICE_REGEX, message: 'を半角数字で入力してください' }
 
-  validates :price, numericality: { greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
+  validates :price, numericality: { greater_than: 299, less_than: 10_000_000, message: '(¥300〜9,999,999の間)を入力してください' }
 end
