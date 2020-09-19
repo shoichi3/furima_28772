@@ -20,3 +20,14 @@ ja:
         burden_id: 発送料の負担
         prefecture_id: 発送元の地域
         delivery_date_id: 発送までの日数
+  activemodel:
+    attributes:
+      order_purchase:
+          token: クレジットカード情報
+          postal_code: 郵便番号
+          input_correctly: を正しく入力してください
+          prefecture_id: 都道府県
+          city: 市町村
+          address: 番地
+          phone_number: 電話番号
+

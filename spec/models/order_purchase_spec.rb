@@ -13,43 +13,43 @@ RSpec.describe OrderPurchase, type: :model do
     it 'tokenが空の場合保存できないこと' do
       @order_purchase.token = nil
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Token can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("クレジットカード情報を入力してください")
     end
     
     it 'postal_codeが空の場合保存できないこと' do
       @order_purchase.postal_code = nil
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Postal code can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("郵便番号を入力してください")
     end
 
     it 'postal_codeでハイフンがない場合保存できないこと' do
       @order_purchase.postal_code = "1234567"
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Postal code Input correctly")
+      expect(@order_purchase.errors.full_messages).to include("郵便番号を正しく入力してください")
     end
 
     it 'prefecture_idが1の場合保存できないこと' do
       @order_purchase.prefecture_id = "1"
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Prefecture Select")
+      expect(@order_purchase.errors.full_messages).to include("都道府県を選んでください")
     end
 
     it 'cityが空の場合保存できないこと' do
       @order_purchase.city = nil
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("City can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("市町村を入力してください")
     end
 
     it 'addressが空の場合保存できないこと' do
       @order_purchase.address = nil
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Address can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("番地を入力してください")
     end
 
     it 'phone_numberが空の場合保存できないこと' do
       @order_purchase.phone_number = nil
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Phone number can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("電話番号を入力してください")
     end
   end
 end

@@ -6,12 +6,12 @@ class OrderPurchase
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Input correctly"}
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "を正しく入力してください"}
     validates :city
     validates :address
     validates :phone_number
   end
-  validates :prefecture_id, numericality: { other_than: 1 , message: "Select"}
+  validates :prefecture_id, numericality: { other_than: 1 , message: "を選んでください"}
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
