@@ -1,72 +1,40 @@
-# テーブル設計
+# furima_28772
 
-## usersテーブル
+フリマーケットを行うためのアプリケーションです。  
+サインインまたはログインをすると、商品の出品や購入を行うことができます。
 
-|   Column        |   Type   |   Option    |
-| --------------- | -------- | ----------- |
-| nickname        | string   | null: false |
-| email           | string   | null: false |
-| password        | string   | null: false |
-| first_name      | string   | null: false |
-| last_name       | string   | null: false |
-| first_name_kana | string   | null: false |
-| last_name_kana  | string   | null: false |
-| birth_date      | date     | null: false |
+# URL
 
-### Association
+http://18.177.167.132 
+トップページからログインページへ遷移してください。
 
-- has_many :items
-- has_many :orders
+# 使用技術一覧
 
-## itemsテーブル
+- ruby 2.6.5  
+- rails 6.0.0
+- MySql 5.6.47
+- Nginx
+- AWS
+  - EC2
+  - S3
+- Capistrano3
+- RSpec
 
-|   Column        |   Type      |   Option                       |
-| --------------- | ----------- | ------------------------------ |
-| name            | string      | null: false                    |
-| detail          | text        | null: false                    |
-| category_id     | integer     | null: false                    |
-| status_id       | integer     | null: false                    |
-| burden_id       | integer     | null: false                    |
-| prefecture_id   | integer     | null: false                    |
-| delivery_date_id| integer     | null: false                    |
-| price           | integer     | null: false                    |
-| user            | references  | null: false, foreign_key: true |
+# AWS構成図
+<img width="540" alt="スクリーンショット 2020-09-27 15 28 12" src="https://user-images.githubusercontent.com/69130053/95648368-762de180-0b11-11eb-90c5-5d12b95c2d59.png">
 
-### Association
+# 機能一覧
 
-- belongs_to :user
-- belongs_to_active_hash :prefecture
-- belongs_to_active_hash :category
-- belongs_to_active_hash :status
-- belongs_to_active_hash :burden
-- belongs_to_active_hash :delivery_date
-- has_one_attached :image
-- has_one :order
+- ユーザー登録、ログイン機能(devise)
+- 商品出品機能
+  - 画像投稿(ActiveStorage, mini_magick, image_processing)
+- 商品一覧表示機能
+- 商品詳細表示機能
+- 商品情報編集機能
+- 商品削除機能 
+- 商品購入機能(API:PAY.JP)
 
-## purchasesテーブル
-
-|   Column             |   Type    |   Option                          |
-| -------------------- | --------- | --------------------------------- |
-| postal_code          | string    | null: false                       |
-| prefecture_id        | integer   | null: false                       |
-| city                 | string    | null: false                       |
-| address              | string    | null: false                       |
-| building             | string    |                                   |
-| phone_number         | string    | null: false                       |
-| order                | references| null: false, foreign_key: true    |
-
-### Association
-- belongs_to_active_hash :prefecture
-- belongs_to :order
-
-## orderテーブル
-|   Column        |   Type    |   Option                          |
-| --------------- | --------- | --------------------------------- |
-| user            | references| null: false, foreign_key: true    |
-| item            | references| null: false, foreign_key: true    |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-- has_one :purchase
+# テスト
+- RSpec
+  - 単体テスト(model)
+  - 結合テスト(system)  
